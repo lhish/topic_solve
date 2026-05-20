@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Discourse Auto Discard",
   "version": "0.1.0",
-  "description": "Keeps linux.do background topic tabs unloaded until you select them.",
+  "description": "让 linux.do 后台打开的话题标签页在切换过去时再加载。",
   "permissions": [
     "tabs",
     "webNavigation"
