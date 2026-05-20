@@ -1,4 +1,4 @@
-# Discourse Auto Discard
+# TabWake
 
 一个给 [linux.do](https://linux.do/) 用户使用的 Chrome MV3 扩展。
 
@@ -29,8 +29,8 @@
 
 ### 从 Release ZIP 安装
 
-1. 打开 [Releases](https://github.com/lhish/discourse-auto-discard-extension/releases) 页面。
-2. 下载最新版本里的 `discourse-auto-discard-extension-*-chrome.zip`。
+1. 打开 [Releases](https://github.com/lhish/tabwake/releases) 页面。
+2. 下载最新版本里的 `tabwake-*-chrome.zip`。
 3. 解压这个 ZIP，得到扩展文件夹。
 4. 在 Chrome 地址栏输入 `chrome://extensions` 并回车。
 5. 打开右上角的“开发者模式”。
@@ -43,13 +43,13 @@
 1. 克隆仓库：
 
    ```bash
-   git clone https://github.com/lhish/discourse-auto-discard-extension.git
+   git clone https://github.com/lhish/tabwake.git
    ```
 
 2. 打开 `chrome://extensions`。
 3. 打开右上角的“开发者模式”。
 4. 点击“加载已解压的扩展程序”。
-5. 选择刚刚克隆下来的 `discourse-auto-discard-extension` 文件夹。
+5. 选择刚刚克隆下来的 `tabwake` 文件夹。
 
 ### 更新扩展
 
@@ -57,7 +57,7 @@
 
 1. 下载并解压新的 Release ZIP，或拉取最新源码。
 2. 打开 `chrome://extensions`。
-3. 找到 `Discourse Auto Discard`。
+3. 找到 `TabWake`。
 4. 点击扩展卡片上的刷新按钮，或先移除旧扩展后重新“加载已解压的扩展程序”。
 
 ## 权限说明

@@ -1,8 +1,8 @@
 # v0.1.0
 
-Initial release.
+首次发布。
 
-- Watch inactive `https://linux.do/*` background tabs.
-- Discard matching background tabs after the main-frame navigation is committed.
-- Keep tabs visible in the tab strip and reload them when selected.
-- Run locally without collecting, storing, or uploading browsing data.
+- 监听后台打开的 `https://linux.do/*` 标签页。
+- 等主框架导航提交后，discard 匹配的后台标签页。
+- 标签页仍保留在标签栏里，并在选中时重新加载。
+- 仅在本地运行，不收集、不保存、不上传浏览数据。

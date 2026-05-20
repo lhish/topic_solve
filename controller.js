@@ -39,7 +39,7 @@
     function scheduleDiscardCheck(tabId) {
       return setTimer(() => {
         discardIfBackgroundWatched(tabId).catch((error) => {
-          console.warn("Discourse Auto Discard failed:", error);
+          console.warn("TabWake failed:", error);
         });
       }, checkDelayMs);
     }
