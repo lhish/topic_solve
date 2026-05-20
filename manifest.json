@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Discourse Auto Discard",
+  "version": "0.1.0",
+  "description": "Keeps linux.do background topic tabs unloaded until you select them.",
+  "permissions": [
+    "tabs",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "https://linux.do/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
