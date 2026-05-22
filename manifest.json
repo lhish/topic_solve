@@ -1,14 +1,17 @@
 {
   "manifest_version": 3,
   "name": "TabWake",
-  "version": "0.1.0",
-  "description": "让 linux.do 后台打开的话题标签页在切换过去时再加载。",
+  "version": "0.2.0",
+  "description": "让 linux.do 后台话题页的延迟阅读统计请求保持登录态。",
   "permissions": [
     "tabs",
-    "webNavigation"
+    "webNavigation",
+    "cookies",
+    "declarativeNetRequest"
   ],
   "host_permissions": [
-    "https://linux.do/*"
+    "https://linux.do/*",
+    "https://ping.ldstatic.com/*"
   ],
   "background": {
     "service_worker": "background.js"

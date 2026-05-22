@@ -81,6 +81,31 @@ test("discardIfBackgroundWatched skips active and non-matching tabs", async () =
   assert.deepEqual(chrome.discarded, []);
 });
 
+test("discardIfBackgroundWatched can be disabled while keeping listeners alive", async () => {
+  const chrome = createChromeMock(
+    new Map([
+      [
+        1,
+        {
+          id: 1,
+          active: false,
+          discarded: false,
+          url: "https://linux.do/t/example/1",
+        },
+      ],
+    ])
+  );
+
+  const controller = createDiscardController({
+    chromeApi: chrome,
+    discardEnabled: false,
+  });
+
+  const discarded = await controller.discardIfBackgroundWatched(1);
+  assert.equal(discarded, false);
+  assert.deepEqual(chrome.discarded, []);
+});
+
 test("event handlers schedule checks only for relevant events", () => {
   const scheduled = [];
   const controller = createDiscardController({
@@ -100,4 +125,35 @@ test("event handlers schedule checks only for relevant events", () => {
   controller.handleCommitted({ tabId: 14, frameId: 2 });
 
   assert.equal(scheduled.length, 3);
+});
+
+test("updated URL event can discard before tab.url catches up", async () => {
+  const chrome = createChromeMock(
+    new Map([
+      [
+        1,
+        {
+          id: 1,
+          active: false,
+          discarded: false,
+          url: "about:blank",
+        },
+      ],
+    ])
+  );
+
+  const scheduled = [];
+  const controller = createDiscardController({
+    chromeApi: chrome,
+    setTimer(fn) {
+      scheduled.push(fn);
+      return scheduled.length;
+    },
+  });
+
+  controller.handleUpdated(1, { url: "https://linux.do/t/example/1" });
+
+  assert.equal(scheduled.length, 1);
+  await scheduled[0]();
+  assert.deepEqual(chrome.discarded, [1]);
 });

@@ -78,6 +78,18 @@ test("shouldDiscardTab only accepts inactive matching tabs", () => {
   );
 });
 
+test("getCandidateUrl prefers event URL over current tab URL", () => {
+  const { getCandidateUrl } = require("../rules.js");
+
+  assert.equal(
+    getCandidateUrl(
+      { url: "about:blank" },
+      "https://linux.do/t/example/1"
+    ),
+    "https://linux.do/t/example/1"
+  );
+});
+
 test("shouldDiscardTab waits for the watched URL to be committed", () => {
   assert.equal(
     shouldDiscardTab({

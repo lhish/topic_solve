@@ -2,13 +2,13 @@
 
 一个给 [linux.do](https://linux.do/) 用户使用的 Chrome MV3 扩展。
 
-如果你习惯把 linux.do 话题页在后台标签页打开，这个扩展会在后台标签页完成主框架导航后，将匹配 `https://linux.do/*` 的非活动标签页 discard。标签页仍然保留在标签栏里，但页面会在你切换过去时再重新加载。
+如果你习惯把 linux.do 话题页在后台标签页打开，Discourse 的延迟阅读统计请求可能会发到 `https://ping.ldstatic.com/message-bus/`，但这个跨站请求默认不会带上 linux.do 登录 Cookie。这个扩展会在本地读取 linux.do 的 `_t` Cookie，并通过浏览器的动态请求头规则把它追加到对应的 message-bus 请求上，让后台打开的话题页仍然以登录态完成阅读统计。
 
 ## 隐私
 
 这个扩展只在 Chrome 本地运行，不收集、不保存、不上传、不共享浏览数据。
 
-它只会检查非活动标签页的 URL 是否匹配 `https://linux.do/*`，用于决定是否 discard 该标签页。
+它会读取 linux.do 的 `_t` 登录 Cookie，并只把这个 Cookie 追加到 `https://ping.ldstatic.com/message-bus/` 的浏览器请求头中。Cookie 不会发送给扩展作者或任何额外服务。
 
 ## 友链
 
@@ -19,10 +19,11 @@
 当前版本监听：
 
 - `linux.do`
+- `ping.ldstatic.com/message-bus`
 
 如果要添加其他论坛，需要同时修改：
 
-- `WATCHED_HOSTS` in `background.js`
+- `auth_cookie_bridge.js` 中的 Cookie 来源和 message-bus 目标
 - `host_permissions` in `manifest.json`
 
 ## 安装
@@ -36,7 +37,7 @@
 5. 打开右上角的“开发者模式”。
 6. 点击“加载已解压的扩展程序”。
 7. 选择第 3 步解压出来的扩展文件夹。
-8. 安装完成后，扩展会自动监听后台打开的 `linux.do` 标签页。
+8. 安装完成后，扩展会自动更新 message-bus 请求头规则。
 
 ### 从源码安装
 
@@ -62,9 +63,12 @@
 
 ## 权限说明
 
-- `tabs`：读取标签页 URL 和状态，并 discard 匹配的非活动标签页。
-- `webNavigation`：等待主框架导航提交后再检查标签页，避免过早处理 `about:blank` 标签页。
-- `https://linux.do/*`：限制扩展只作用于 linux.do。
+- `tabs`：保留给标签页状态监听逻辑使用。
+- `webNavigation`：保留给导航事件监听逻辑使用。
+- `cookies`：读取 linux.do 的 `_t` 登录 Cookie。
+- `declarativeNetRequest`：安装动态请求头规则，把 `_t` Cookie 追加到 message-bus 请求。
+- `https://linux.do/*`：允许读取 linux.do 登录 Cookie。
+- `https://ping.ldstatic.com/*`：允许修改 linux.do 使用的 message-bus 请求头。
 
 ## 测试
 

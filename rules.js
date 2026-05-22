@@ -7,8 +7,8 @@
     return hosts.map((host) => host.trim().toLowerCase()).filter(Boolean);
   }
 
-  function getCandidateUrl(tab) {
-    return tab?.url || "";
+  function getCandidateUrl(tab, eventUrl) {
+    return eventUrl || tab?.url || "";
   }
 
   function isWatchedUrl(rawUrl, watchedHosts = DEFAULT_WATCHED_HOSTS) {
@@ -27,12 +27,12 @@
     return normalizeHosts(watchedHosts).includes(url.hostname.toLowerCase());
   }
 
-  function shouldDiscardTab(tab, watchedHosts = DEFAULT_WATCHED_HOSTS) {
+  function shouldDiscardTab(tab, watchedHosts = DEFAULT_WATCHED_HOSTS, eventUrl) {
     if (!tab || tab.active || tab.discarded) {
       return false;
     }
 
-    return isWatchedUrl(getCandidateUrl(tab), watchedHosts);
+    return isWatchedUrl(getCandidateUrl(tab, eventUrl), watchedHosts);
   }
 
   const api = {

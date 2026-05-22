@@ -1,3 +1,10 @@
+# v0.2.0
+
+- 新增 linux.do 登录 Cookie bridge：读取本地 `_t` Cookie，并追加到 `https://ping.ldstatic.com/message-bus/` 请求。
+- 支持后台打开话题页时，让 Discourse 延迟阅读统计请求携带登录态。
+- 新增动态请求头规则和 Cookie 变更监听，登录 Cookie 变化后会刷新规则。
+- 暂停自动 discard 行为，避免后台标签页被提前卸载影响话题加载与统计验证。
+
 # v0.1.0
 
 首次发布。

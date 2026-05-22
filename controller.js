@@ -5,7 +5,7 @@
     root.discourseAutoDiscardRules ||
     (typeof require !== "undefined" ? require("./rules.js") : null);
 
-  const DEFAULT_CHECK_DELAY_MS = 250;
+  const DEFAULT_CHECK_DELAY_MS = 0;
   const DEFAULT_RECENTLY_DISCARDED_TTL_MS = 5000;
 
   function createDiscardController(options) {
@@ -13,17 +13,22 @@
     const watchedHosts = options.watchedHosts || rules.DEFAULT_WATCHED_HOSTS;
     const setTimer = options.setTimer || setTimeout;
     const checkDelayMs = options.checkDelayMs ?? DEFAULT_CHECK_DELAY_MS;
+    const discardEnabled = options.discardEnabled ?? true;
     const recentlyDiscardedTtlMs =
       options.recentlyDiscardedTtlMs ?? DEFAULT_RECENTLY_DISCARDED_TTL_MS;
     const recentlyDiscardedTabs = new Set();
 
-    async function discardIfBackgroundWatched(tabId) {
-      if (!Number.isInteger(tabId) || recentlyDiscardedTabs.has(tabId)) {
+    async function discardIfBackgroundWatched(tabId, eventUrl) {
+      if (
+        !discardEnabled ||
+        !Number.isInteger(tabId) ||
+        recentlyDiscardedTabs.has(tabId)
+      ) {
         return false;
       }
 
       const tab = await chromeApi.tabs.get(tabId);
-      if (!rules.shouldDiscardTab(tab, watchedHosts)) {
+      if (!rules.shouldDiscardTab(tab, watchedHosts, eventUrl)) {
         return false;
       }
 
@@ -36,9 +41,9 @@
       return true;
     }
 
-    function scheduleDiscardCheck(tabId) {
+    function scheduleDiscardCheck(tabId, eventUrl) {
       return setTimer(() => {
-        discardIfBackgroundWatched(tabId).catch((error) => {
+        return discardIfBackgroundWatched(tabId, eventUrl).catch((error) => {
           console.warn("TabWake failed:", error);
         });
       }, checkDelayMs);
@@ -46,19 +51,19 @@
 
     function handleCreated(tab) {
       if (tab.id !== undefined) {
-        scheduleDiscardCheck(tab.id);
+        scheduleDiscardCheck(tab.id, tab.url);
       }
     }
 
     function handleUpdated(tabId, changeInfo) {
       if (changeInfo.url || changeInfo.status === "loading") {
-        scheduleDiscardCheck(tabId);
+        scheduleDiscardCheck(tabId, changeInfo.url);
       }
     }
 
     function handleCommitted(details) {
       if (details.frameId === 0) {
-        scheduleDiscardCheck(details.tabId);
+        scheduleDiscardCheck(details.tabId, details.url);
       }
     }
 
