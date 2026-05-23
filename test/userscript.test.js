@@ -5,9 +5,14 @@ const test = require("node:test");
 const vm = require("node:vm");
 
 const script = fs.readFileSync(
-  path.join(__dirname, "../userscripts/linuxdo-topic-json-track-visit.user.js"),
+  path.join(__dirname, "../userscripts/topic_solve.user.js"),
   "utf8"
 );
+
+test("userscript metadata uses the Greasy Fork script name", () => {
+  assert.match(script, /@name\s+topic_solve/);
+  assert.match(script, /@version\s+0\.3\.1/);
+});
 
 function runUserscript({ pathname, visibilityState = "hidden" }) {
   const fetchCalls = [];

@@ -33,7 +33,13 @@
 仓库同时提供一个独立油猴脚本：
 
 ```text
-userscripts/linuxdo-topic-json-track-visit.user.js
+userscripts/topic_solve.user.js
+```
+
+Greasy Fork 安装页面：
+
+```text
+https://greasyfork.org/zh-CN/scripts/579417-topic-solve
 ```
 
 这个脚本用于验证后台打开 linux.do 话题页时，额外触发前台直接打开会出现的 topic JSON track-view 请求：

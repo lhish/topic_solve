@@ -1,3 +1,9 @@
+# v0.3.1
+
+- 将 Greasy Fork 用户脚本名称更新为 `topic_solve`。
+- 将仓库内用户脚本文件同步重命名为 `userscripts/topic_solve.user.js`。
+- 在 README 中补充 Greasy Fork 安装页面链接。
+
 # v0.3.0
 
 - 新增独立油猴脚本 `userscripts/linuxdo-topic-json-track-visit.user.js`。

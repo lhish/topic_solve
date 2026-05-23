@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         linux.do background topic track_visit
+// @name         topic_solve
 // @namespace    local-linuxdo
-// @version      0.3.0
+// @version      0.3.1
 // @description  Send the same topic JSON track_visit request when a linux.do topic opens in a background tab.
 // @match        https://linux.do/t/*
 // @run-at       document-start
