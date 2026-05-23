@@ -1,6 +1,6 @@
-# TabWake
+# Topic Solve
 
-一个给 [linux.do](https://linux.do/) 用户使用的 Chrome MV3 扩展。
+一个给 [linux.do](https://linux.do/) 用户使用的 Chrome MV3 扩展和用户脚本。
 
 如果你习惯把 linux.do 话题页在后台标签页打开，Discourse 的延迟阅读统计请求可能会发到 `https://ping.ldstatic.com/message-bus/`，但这个跨站请求默认不会带上 linux.do 登录 Cookie。这个扩展会在本地读取 linux.do 的 `_t` Cookie，并通过浏览器的动态请求头规则把它追加到对应的 message-bus 请求上，让后台打开的话题页仍然以登录态完成阅读统计。
 
@@ -53,7 +53,7 @@ GET /t/<topic_id>/1.json?track_visit=true&forceLoad=true
 ### 从 Release ZIP 安装
 
 1. 打开 [Releases](https://github.com/lhish/topic_solve/releases) 页面。
-2. 下载最新版本里的 `tabwake-*-chrome.zip`。
+2. 下载最新版本里的 `topic_solve-*-chrome.zip`。
 3. 解压这个 ZIP，得到扩展文件夹。
 4. 在 Chrome 地址栏输入 `chrome://extensions` 并回车。
 5. 打开右上角的“开发者模式”。
@@ -72,7 +72,7 @@ GET /t/<topic_id>/1.json?track_visit=true&forceLoad=true
 2. 打开 `chrome://extensions`。
 3. 打开右上角的“开发者模式”。
 4. 点击“加载已解压的扩展程序”。
-5. 选择刚刚克隆下来的 `tabwake` 文件夹。
+5. 选择刚刚克隆下来的 `topic_solve` 文件夹。
 
 ### 更新扩展
 
@@ -80,7 +80,7 @@ GET /t/<topic_id>/1.json?track_visit=true&forceLoad=true
 
 1. 下载并解压新的 Release ZIP，或拉取最新源码。
 2. 打开 `chrome://extensions`。
-3. 找到 `TabWake`。
+3. 找到 `Topic Solve`。
 4. 点击扩展卡片上的刷新按钮，或先移除旧扩展后重新“加载已解压的扩展程序”。
 
 ## 权限说明

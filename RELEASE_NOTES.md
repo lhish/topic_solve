@@ -1,3 +1,10 @@
+# v0.3.2
+
+- 将 README 主标题和安装说明从 `TabWake` 更新为 `Topic Solve`。
+- 将扩展显示名称更新为 `Topic Solve`。
+- 将 Release ZIP 命名调整为 `topic_solve-*-chrome.zip`。
+- 同步内部日志和测试里的扩展名称。
+
 # v0.3.1
 
 - 将 Greasy Fork 用户脚本名称更新为 `topic_solve`。

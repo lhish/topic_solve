@@ -11,7 +11,7 @@ const script = fs.readFileSync(
 
 test("userscript metadata uses the Greasy Fork script name", () => {
   assert.match(script, /@name\s+topic_solve/);
-  assert.match(script, /@version\s+0\.3\.1/);
+  assert.match(script, /@version\s+0\.3\.2/);
 });
 
 function runUserscript({ pathname, visibilityState = "hidden" }) {
@@ -62,7 +62,7 @@ test("userscript sends topic JSON track_visit request for hidden topic tabs", ()
     "2224994"
   );
   assert.equal(
-    storage.has("linuxdo-topic-json-track-visit:2224994"),
+    storage.has("topic_solve:2224994"),
     true
   );
 });

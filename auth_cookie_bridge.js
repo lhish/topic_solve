@@ -61,7 +61,7 @@
         removeRuleIds: [COOKIE_BRIDGE_RULE_ID],
         addRules,
       });
-      logger.info("TabWake cookie bridge updated", { hasCookie: addRules.length > 0 });
+      logger.info("Topic Solve cookie bridge updated", { hasCookie: addRules.length > 0 });
     }
 
     async function refresh() {
@@ -75,7 +75,7 @@
       }
 
       return refresh().catch((error) => {
-        logger.warn("TabWake cookie bridge refresh failed", error);
+        logger.warn("Topic Solve cookie bridge refresh failed", error);
         return false;
       });
     }

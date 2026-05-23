@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         topic_solve
 // @namespace    local-linuxdo
-// @version      0.3.1
+// @version      0.3.2
 // @description  Send the same topic JSON track_visit request when a linux.do topic opens in a background tab.
 // @match        https://linux.do/t/*
 // @run-at       document-start
@@ -16,7 +16,7 @@
   }
 
   const topicId = topicIdFromPath(location.pathname);
-  const storageKey = `linuxdo-topic-json-track-visit:${topicId}`;
+  const storageKey = `topic_solve:${topicId}`;
 
   if (sessionStorage.getItem(storageKey)) {
     return;

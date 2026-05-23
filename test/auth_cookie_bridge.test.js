@@ -77,7 +77,7 @@ test("refresh installs the cookie append rule when linux.do auth cookie exists",
     chrome.updates[0].addRules[0].action.requestHeaders[0].value,
     "_t=secret"
   );
-  assert.deepEqual(logs[0], ["TabWake cookie bridge updated", { hasCookie: true }]);
+  assert.deepEqual(logs[0], ["Topic Solve cookie bridge updated", { hasCookie: true }]);
 });
 
 test("refresh removes the cookie append rule when linux.do auth cookie is absent", async () => {

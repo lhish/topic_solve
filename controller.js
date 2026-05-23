@@ -44,7 +44,7 @@
     function scheduleDiscardCheck(tabId, eventUrl) {
       return setTimer(() => {
         return discardIfBackgroundWatched(tabId, eventUrl).catch((error) => {
-          console.warn("TabWake failed:", error);
+          console.warn("Topic Solve failed:", error);
         });
       }, checkDelayMs);
     }

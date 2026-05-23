@@ -21,5 +21,5 @@ const cookieBridge = discourseAuthCookieBridge.createAuthCookieBridge({
 });
 
 cookieBridge.start().catch((error) => {
-  console.warn("TabWake cookie bridge failed:", error);
+  console.warn("Topic Solve cookie bridge failed:", error);
 });
