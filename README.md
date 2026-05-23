@@ -52,7 +52,7 @@ GET /t/<topic_id>/1.json?track_visit=true&forceLoad=true
 
 ### 从 Release ZIP 安装
 
-1. 打开 [Releases](https://github.com/lhish/tabwake/releases) 页面。
+1. 打开 [Releases](https://github.com/lhish/topic_solve/releases) 页面。
 2. 下载最新版本里的 `tabwake-*-chrome.zip`。
 3. 解压这个 ZIP，得到扩展文件夹。
 4. 在 Chrome 地址栏输入 `chrome://extensions` 并回车。
@@ -66,7 +66,7 @@ GET /t/<topic_id>/1.json?track_visit=true&forceLoad=true
 1. 克隆仓库：
 
    ```bash
-   git clone https://github.com/lhish/tabwake.git
+   git clone https://github.com/lhish/topic_solve.git
    ```
 
 2. 打开 `chrome://extensions`。

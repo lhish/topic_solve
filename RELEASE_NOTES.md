@@ -3,6 +3,7 @@
 - 将 Greasy Fork 用户脚本名称更新为 `topic_solve`。
 - 将仓库内用户脚本文件同步重命名为 `userscripts/topic_solve.user.js`。
 - 在 README 中补充 Greasy Fork 安装页面链接。
+- 将 GitHub 仓库重命名为 `lhish/topic_solve`，并同步 README 中的仓库链接。
 
 # v0.3.0
 
