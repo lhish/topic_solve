@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TabWake",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "让 linux.do 后台话题页的延迟阅读统计请求保持登录态。",
   "permissions": [
     "tabs",

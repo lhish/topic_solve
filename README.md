@@ -28,6 +28,22 @@
 
 ## 安装
 
+### 安装油猴验证脚本
+
+仓库同时提供一个独立油猴脚本：
+
+```text
+userscripts/linuxdo-topic-json-track-visit.user.js
+```
+
+这个脚本用于验证后台打开 linux.do 话题页时，额外触发前台直接打开会出现的 topic JSON track-view 请求：
+
+```text
+GET /t/<topic_id>/1.json?track_visit=true&forceLoad=true
+```
+
+它只在话题页初始处于后台标签页时运行，不替代 Chrome 扩展的 message-bus Cookie bridge。
+
 ### 从 Release ZIP 安装
 
 1. 打开 [Releases](https://github.com/lhish/tabwake/releases) 页面。

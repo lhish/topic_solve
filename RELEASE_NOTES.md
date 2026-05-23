@@ -1,3 +1,10 @@
+# v0.3.0
+
+- 新增独立油猴脚本 `userscripts/linuxdo-topic-json-track-visit.user.js`。
+- 后台打开 linux.do 话题页时，脚本会补发同源 `GET /t/<topic_id>/1.json?track_visit=true&forceLoad=true` 请求。
+- 补发请求携带 `Discourse-Track-View` 和 `Discourse-Track-View-Topic-Id`，用于验证前台 topic JSON track-view 路径。
+- 新增 userscript 行为测试，覆盖后台触发、前台不触发和不支持 URL 抛错。
+
 # v0.2.0
 
 - 新增 linux.do 登录 Cookie bridge：读取本地 `_t` Cookie，并追加到 `https://ping.ldstatic.com/message-bus/` 请求。
