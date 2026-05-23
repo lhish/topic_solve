@@ -2,6 +2,10 @@
 
 一个给 [linux.do](https://linux.do/) 用户使用的 Greasy Fork 用户脚本。
 
+## 友链
+
+- [linux.do](https://linux.do/)
+
 ## 功能
 
 这个脚本只在 `https://linux.do/t/*` 话题页初始处于后台标签页时运行。
