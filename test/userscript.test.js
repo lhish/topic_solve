@@ -11,7 +11,7 @@ const script = fs.readFileSync(
 
 test("userscript metadata uses the Greasy Fork script name", () => {
   assert.match(script, /@name\s+topic_solve/);
-  assert.match(script, /@version\s+0\.3\.2/);
+  assert.match(script, /@version\s+0\.4\.0/);
 });
 
 function runUserscript({ pathname, visibilityState = "hidden" }) {

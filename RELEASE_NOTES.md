@@ -1,3 +1,10 @@
+# v0.4.0
+
+- 删除 Chrome MV3 扩展代码和扩展测试。
+- 仓库只保留 Greasy Fork 用户脚本 `userscripts/topic_solve.user.js`。
+- README 改为纯用户脚本文档，移除扩展安装、权限和 ZIP 发布说明。
+- Release 不再上传 Chrome 扩展 ZIP，只发布 `topic_solve.user.js`。
+
 # v0.3.2
 
 - 将 README 主标题和安装说明从 `TabWake` 更新为 `Topic Solve`。
